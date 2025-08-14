@@ -1,0 +1,126 @@
+-- Madara Hub para Blue Lock: Rivals
+-- UI + Auto Farm Gol + Resgatar todos os códigos
+-- Script base para hospedar no Pastebin/GitHub e usar via loadstring
+
+-- Criar UI
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local FarmButton = Instance.new("TextButton")
+local ConfigButton = Instance.new("TextButton")
+local CodesFrame = Instance.new("Frame")
+local BackButton = Instance.new("TextButton")
+local RedeemButton = Instance.new("TextButton")
+
+-- Ativar GUI
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+-- Frame principal
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+MainFrame.Size = UDim2.new(0, 300, 0, 180)
+MainFrame.Position = UDim2.new(0.5, -150, 0.5, -90)
+
+-- Título
+Title.Parent = MainFrame
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.Text = "Madara Hub"
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 22
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+-- Botão Auto Farm Gol
+FarmButton.Parent = MainFrame
+FarmButton.Size = UDim2.new(0.9, 0, 0, 40)
+FarmButton.Position = UDim2.new(0.05, 0, 0.3, 0)
+FarmButton.Text = "Auto Farm Gol"
+FarmButton.Font = Enum.Font.Gotham
+FarmButton.TextSize = 18
+FarmButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+FarmButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+-- Botão Configurações
+ConfigButton.Parent = MainFrame
+ConfigButton.Size = UDim2.new(0.9, 0, 0, 40)
+ConfigButton.Position = UDim2.new(0.05, 0, 0.6, 0)
+ConfigButton.Text = "Configurações"
+ConfigButton.Font = Enum.Font.Gotham
+ConfigButton.TextSize = 18
+ConfigButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+ConfigButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+-- Frame de Códigos (escondido)
+CodesFrame.Parent = ScreenGui
+CodesFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+CodesFrame.Size = UDim2.new(0, 300, 0, 180)
+CodesFrame.Position = UDim2.new(0.5, -150, 0.5, -90)
+CodesFrame.Visible = false
+
+-- Botão voltar
+BackButton.Parent = CodesFrame
+BackButton.Size = UDim2.new(0.4, 0, 0, 30)
+BackButton.Position = UDim2.new(0.05, 0, 0.05, 0)
+BackButton.Text = "Voltar"
+BackButton.Font = Enum.Font.Gotham
+BackButton.TextSize = 16
+BackButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+BackButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+-- Botão resgatar códigos
+RedeemButton.Parent = CodesFrame
+RedeemButton.Size = UDim2.new(0.9, 0, 0, 40)
+RedeemButton.Position = UDim2.new(0.05, 0, 0.4, 0)
+RedeemButton.Text = "Resgatar Todos os Códigos"
+RedeemButton.Font = Enum.Font.Gotham
+RedeemButton.TextSize = 16
+RedeemButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+RedeemButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+-- Função Auto Farm Gol
+local farming = false
+FarmButton.MouseButton1Click:Connect(function()
+    farming = not farming
+    FarmButton.Text = farming and "Parar Auto Farm" or "Auto Farm Gol"
+
+    while farming do
+        pcall(function()
+            -- TODO: Adicionar código para:
+            -- 1. Teleportar até a bola do adversário
+            -- 2. Dar posse da bola ao jogador
+            -- 3. Teleportar até o gol
+            -- 4. Marcar o gol
+            print("[Madara Hub] Fazendo farm de gol...")
+        end)
+        task.wait(1)
+    end
+end)
+
+-- Abrir aba de configurações
+ConfigButton.MouseButton1Click:Connect(function()
+    MainFrame.Visible = false
+    CodesFrame.Visible = true
+end)
+
+-- Voltar para tela principal
+BackButton.MouseButton1Click:Connect(function()
+    CodesFrame.Visible = false
+    MainFrame.Visible = true
+end)
+
+-- Função resgatar todos os códigos
+RedeemButton.MouseButton1Click:Connect(function()
+    pcall(function()
+        -- Lista de códigos (adicione ou atualize)
+        local codigos = {
+            "CODE1",
+            "CODE2",
+            "CODE3"
+        }
+        for _, code in ipairs(codigos) do
+            -- TODO: Chamar função/RemoteEvent do jogo para resgatar código
+            print("[Madara Hub] Resgatando código:", code)
+        end
+    end)
+end)
